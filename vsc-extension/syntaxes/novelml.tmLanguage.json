@@ -59,7 +59,7 @@
           "endCaptures": { "1": { "name": "punctuation.definition.tag.end.novelml" } },
           "patterns": [{ "include": "#attributes" }]
         },
-                {
+        {
           "comment": "Variable & Data Tags",
           "begin": "(\\[)(set|load)",
           "beginCaptures": {
@@ -97,7 +97,7 @@
     "attributes": {
       "patterns": [
         {
-          "comment": "Handle 'text' attribute (with complex suffix like text-jp, text1, text_1-hk) as plain text content",
+          "comment": "Handle 'text' attribute (with complex suffix like text-jp, text1, text_1-hk) - FIXED",
           "begin": "\\b(text[a-zA-Z0-9_]*)(-[a-zA-Z0-9_-]+)*(=)(\")",
           "beginCaptures": {
             "1": { "name": "entity.other.attribute-name.novelml" },
@@ -109,10 +109,14 @@
           "endCaptures": {
             "0": { "name": "punctuation.definition.string.end.novelml" }
           },
-          "contentName": "text.plain.novelml"
+          "patterns": [
+            {
+              "include": "#variables"
+            }
+          ]
         },
         {
-          "comment": "Handle 'text' attribute (no suffix) as plain text content",
+          "comment": "Handle 'text' attribute (no suffix) - FIXED",
           "begin": "\\b(text)(=)(\")",
           "beginCaptures": {
             "1": { "name": "entity.other.attribute-name.novelml" },
@@ -123,7 +127,11 @@
           "endCaptures": {
             "0": { "name": "punctuation.definition.string.end.novelml" }
           },
-          "contentName": "text.plain.novelml"
+          "patterns": [
+            {
+              "include": "#variables"
+            }
+          ]
         },
         {
           "comment": "Match other attributes (excluding 'text')",
