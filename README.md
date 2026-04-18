@@ -6,7 +6,6 @@ A **multi-editor syntax highlighting extension pack** for the **NovelML** visual
 
 **Visual Novel Engine Project:** [Suika3](https://github.com/awemorris/suika3)
 
----
 
 ### Features
 
