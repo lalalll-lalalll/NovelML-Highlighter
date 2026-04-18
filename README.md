@@ -31,7 +31,7 @@ A **multi-editor syntax highlighting extension pack** for the **NovelML** visual
 ### 效果预览
 
 安装插件并应用主题后，你的代码将呈现如下效果：
-> **注意**: 具体高亮颜色因编辑器主题而异。
+> **注意**: 具体高亮颜色因编辑器主题而异。推荐使用[**Palenight Theme**](https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme)。
 
 ![example](assets/example.png)
 
