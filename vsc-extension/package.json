@@ -1,0 +1,49 @@
+{
+  "name": "novelml-highlighter",
+  "displayName": "NovelML Highlighter",
+  "description": "Syntax highlighting support for NovelML (.novel) files",
+  "version": "1.0.0",
+  "publisher": "lalalll-lalalll",
+  "engines": {
+    "vscode": "^1.116.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "novelml",
+    "suika",
+    "suika3",
+    "highlighting"
+  ],
+  "activationEvents": [
+    "onLanguage:novelml"
+  ],
+  "main": "./syntaxes/novelml.tmLanguage.json",
+  "contributes": {
+    "languages": [
+      {
+        "id": "novelml",
+        "aliases": [
+          "NovelML",
+          "novelml"
+        ],
+        "extensions": [
+          ".novel"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "novelml",
+        "scopeName": "source.novelml",
+        "path": "./syntaxes/novelml.tmLanguage.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lalalll-lalalll/NovelML-Highlighter.git"
+  }
+}

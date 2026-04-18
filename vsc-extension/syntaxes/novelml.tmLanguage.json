@@ -1,0 +1,169 @@
+{
+  "name": "NovelML",
+  "scopeName": "source.novelml",
+  "fileTypes": [
+    "novel"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#tags"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "match": "#.*$",
+      "name": "comment.line.number-sign.novelml"
+    },
+    "variables": {
+      "match": "\\$\\{[a-zA-Z_][a-zA-Z0-9_]*\\}",
+      "name": "variable.parameter.novelml"
+    },
+    "tags": {
+      "patterns": [
+        {
+          "comment": "Core Dialogue Tags",
+          "begin": "(\\[)(text(-[a-zA-Z0-9]+)?)(?=\\s|>|/|\\])",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.novelml" },
+            "2": { "name": "entity.name.tag.novelml" }
+          },
+          "end": "(\\])",
+          "endCaptures": { "1": { "name": "punctuation.definition.tag.end.novelml" } },
+          "patterns": [{ "include": "#attributes" }]
+        },
+        {
+          "comment": "Flow Control Tags",
+          "begin": "(\\[)(if|elseif|else|endif|goto|label|chapter)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.novelml" },
+            "2": { "name": "keyword.control.novelml" }
+          },
+          "end": "(\\])",
+          "endCaptures": { "1": { "name": "punctuation.definition.tag.end.novelml" } },
+          "patterns": [{ "include": "#attributes" }]
+        },
+        {
+          "comment": "Macro Tags",
+          "begin": "(\\[)(callmacro|defmacro|endmacro|returnmacro)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.novelml" },
+            "2": { "name": "keyword.control.novelml" }
+          },
+          "end": "(\\])",
+          "endCaptures": { "1": { "name": "punctuation.definition.tag.end.novelml" } },
+          "patterns": [{ "include": "#attributes" }]
+        },
+                {
+          "comment": "Variable & Data Tags",
+          "begin": "(\\[)(set|load)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.novelml" },
+            "2": { "name": "storage.type.variable.novelml" }
+          },
+          "end": "(\\])",
+          "endCaptures": { "1": { "name": "punctuation.definition.tag.end.novelml" } },
+          "patterns": [{ "include": "#attributes" }]
+        },
+        {
+          "comment": "Media & Effect Tags",
+          "begin": "(\\[)(bgm|bg|se|video|anime|move|wait|volume|skip|click)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.novelml" },
+            "2": { "name": "entity.name.tag.function.novelml" }
+          },
+          "end": "(\\])",
+          "endCaptures": { "1": { "name": "punctuation.definition.tag.end.novelml" } },
+          "patterns": [{ "include": "#attributes" }]
+        },
+        {
+          "comment": "Display & UI Tags",
+          "begin": "(\\[)(choose|ch|layer|pencil|gui|config)",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.begin.novelml" },
+            "2": { "name": "entity.name.tag.type.novelml" }
+          },
+          "end": "(\\])",
+          "endCaptures": { "1": { "name": "punctuation.definition.tag.end.novelml" } },
+          "patterns": [{ "include": "#attributes" }]
+        }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "comment": "Handle 'text' attribute (with suffix) as plain text content",
+          "begin": "\\b(text-[a-zA-Z0-9]+)(=)(\")",
+          "beginCaptures": {
+            "1": { "name": "entity.other.attribute-name.novelml" },
+            "2": { "name": "punctuation.separator.key-value.novelml" },
+            "3": { "name": "punctuation.definition.string.begin.novelml" }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.novelml" }
+          },
+          "contentName": "text.plain.novelml"
+        },
+        {
+          "comment": "Handle 'text' attribute (no suffix) as plain text content",
+          "begin": "\\b(text)(=)(\")",
+          "beginCaptures": {
+            "1": { "name": "entity.other.attribute-name.novelml" },
+            "2": { "name": "punctuation.separator.key-value.novelml" },
+            "3": { "name": "punctuation.definition.string.begin.novelml" }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.novelml" }
+          },
+          "contentName": "text.plain.novelml"
+        },
+        {
+          "comment": "Match other attributes (excluding 'text')",
+          "match": "\\b(?!text)[a-zA-Z_][a-zA-Z0-9_-]*(?==)",
+          "name": "entity.other.attribute-name.novelml"
+        },
+        {
+          "comment": "Double quoted strings (for non-text attributes)",
+          "begin": "(=)\"",
+          "beginCaptures": {
+            "1": { "name": "punctuation.separator.key-value.novelml" }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.novelml" }
+          },
+          "contentName": "string.quoted.double.novelml",
+          "patterns": [
+            {
+              "include": "#variables"
+            }
+          ]
+        },
+        {
+          "comment": "Single quoted strings (for non-text attributes)",
+          "begin": "(=)'",
+          "beginCaptures": {
+            "1": { "name": "punctuation.separator.key-value.novelml" }
+          },
+          "end": "'",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.novelml" }
+          },
+          "contentName": "string.quoted.single.novelml",
+          "patterns": [
+            {
+              "include": "#variables"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
