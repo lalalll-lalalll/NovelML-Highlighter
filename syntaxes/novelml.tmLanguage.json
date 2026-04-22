@@ -96,57 +96,25 @@
     },
     "attributes": {
       "patterns": [
-
-    {
-  "comment": "Handle 'text' attribute blocks - SIMPLE ONE-STEP",
-  "begin": "\\b(text[a-zA-Z0-9_]*)(-[a-zA-Z0-9_-]+)?\\s*(=)[\\s]*?(\"\"\")",
-  "beginCaptures": {
-    "1": { "name": "entity.other.attribute-name.novelml" },
-    "2": { "name": "entity.other.attribute-name.novelml" },
-    "3": { "name": "punctuation.separator.key-value.novelml" },
-    "4": { "name": "punctuation.definition.string.begin.novelml" }
-  },
-  "end": "\"\"\"",
-  "endCaptures": {
-    "0": { "name": "punctuation.definition.string.end.novelml" }
-  },
-  "patterns": [
-    {
-      "include": "#variables"
-    },
-    {
-  "comment": "Escape sequences",
-  "match": "\\\\.",
-  "name": "constant.character.escape.novelml"
-}
-  ]
-},    
-  {
-    "comment": "Handle 'text' attribute (with complex suffix) - SINGLE LINE ONLY",
-    "begin": "\\b(text[a-zA-Z0-9_]*)(-[a-zA-Z0-9_-]+)*\\s*(=)\\s*(\")",
-    "beginCaptures": {
-      "1": { "name": "entity.other.attribute-name.novelml" },
-      "2": { "name": "entity.other.attribute-name.novelml" },
-      "3": { "name": "punctuation.separator.key-value.novelml" },
-      "4": { "name": "punctuation.definition.string.begin.novelml" }
-    },
-    "end": "\"",
-    "endCaptures": {
-      "0": { "name": "punctuation.definition.string.end.novelml" }
-    },
-    "patterns": [
-      {
-        "include": "#variables"
-      },
-      {
-  "comment": "Escape sequences",
-  "match": "\\\\.",
-  "name": "constant.character.escape.novelml"
-}
-    ]
-  },
-
-
+        {
+          "comment": "Handle 'text' attribute (with complex suffix like text-jp, text1, text_1-hk) - FIXED",
+          "begin": "\\b(text[a-zA-Z0-9_]*)(-[a-zA-Z0-9_-]+)*\\s*(=)\\s*(\"\"\"|\")?",
+          "beginCaptures": {
+            "1": { "name": "entity.other.attribute-name.novelml" },
+            "2": { "name": "entity.other.attribute-name.novelml" },
+            "3": { "name": "punctuation.separator.key-value.novelml" },
+            "4": { "name": "punctuation.definition.string.begin.novelml" }
+          },
+          "end": "\"\"?\"?",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.novelml" }
+          },
+          "patterns": [
+            {
+              "include": "#variables"
+            }
+          ]
+        },
         {
           "comment": "Handle 'text' attribute (no suffix) - FIXED",
           "begin": "\\b(text)(=)(\")",
@@ -162,52 +130,9 @@
           "patterns": [
             {
               "include": "#variables"
-            },
-            {
-  "comment": "Escape sequences",
-  "match": "\\\\.",
-  "name": "constant.character.escape.novelml"
-}
+            }
           ]
         },
-        {
-  "comment": "Match generic attribute name and start of string",
-  "begin": "\\b([a-zA-Z_][a-zA-Z0-9_.-]*)\\s*(=)\\s*(\")",
-  "beginCaptures": {
-    "1": { "name": "entity.other.attribute-name.novelml" },
-    "2": { "name": "punctuation.separator.key-value.novelml" },
-    "3": { "name": "punctuation.definition.string.begin.novelml" }
-  },
-  "end": "\"",
-  "endCaptures": {
-    "0": { "name": "punctuation.definition.string.end.novelml" }
-  },
-  "contentName": "string.quoted.double.novelml",
-  "patterns": [
-    {
-      "include": "#variables"
-    }
-  ]
-},
-{
-  "comment": "Match generic attribute name and start of single quoted string",
-  "begin": "\\b([a-zA-Z_][a-zA-Z0-9_.-]*)\\s*(=)\\s*(')",
-  "beginCaptures": {
-    "1": { "name": "entity.other.attribute-name.novelml" },
-    "2": { "name": "punctuation.separator.key-value.novelml" },
-    "3": { "name": "punctuation.definition.string.begin.novelml" }
-  },
-  "end": "'",
-  "endCaptures": {
-    "0": { "name": "punctuation.definition.string.end.novelml" }
-  },
-  "contentName": "string.quoted.single.novelml",
-  "patterns": [
-    {
-    "include": "#variables"
-  }
-  ]
-},
         {
           "comment": "Match other attributes (excluding 'text')",
           "match": "\\b(?!text)[a-zA-Z_][a-zA-Z0-9_-]*(?==)",
