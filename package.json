@@ -2,7 +2,7 @@
   "name": "novelml-helper",
   "displayName": "NovelML Helper",
   "description": "Syntax assistance and support for NovelML(.novel) and Ray scripts files",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "publisher": "lalalll-lalalll",
   "engines": {
     "vscode": "^1.116.0"
