@@ -1,102 +1,23 @@
 {
-  "scopeName": "source.ray",
-  "name": "Ray",
-  "patterns": [
-    { "include": "#comments" },
-    { "include": "#strings" },
-    { "include": "#numbers" },
-    { "include": "#function-declaration" },
-    { "include": "#keywords" },
-    { "include": "#builtins" },
-    { "include": "#operators" },
-    { "include": "#function-call" }
-  ],
-  "repository": {
     "comments": {
-      "patterns": [
-        {
-          "name": "comment.line.double-slash.ray",
-          "match": "//.*$"
-        }
-      ]
+        "lineComment": "//"
     },
-    "strings": {
-      "patterns": [
-        {
-          "name": "string.quoted.double.ray",
-          "begin": "\"",
-          "end": "\"",
-          "patterns": [
-            {
-              "name": "constant.character.escape.ray",
-              "match": "\\\\."
-            }
-          ]
-        }
-      ]
-    },
-    "numbers": {
-      "patterns": [
-        {
-          "name": "constant.numeric.ray",
-          "match": "\\b\\d+(?:\\.\\d+)?\\b"
-        }
-      ]
-    },
-    "keywords": {
-      "patterns": [
-        {
-          "name": "keyword.control.ray",
-          "match": "\\b(func|var|if|else|for|while|return|class|extend|new|in)\\b"
-        }
-      ]
-    },
-    "builtins": {
-      "patterns": [
-        {
-          "name": "support.function.builtin.ray",
-          "match": "\\b(print|int|float|newArray|abs|random|sin|cos|tan)\\b"
-        },
-        {
-          "name": "support.function.method.ray",
-          "match": "\\b(push|pop|resize|charCount|charAt|substring|unset)\\b"
-        },
-        {
-          "name": "variable.other.property.ray",
-          "match": "\\blength\\b"
-        }
-      ]
-    },
-    "operators": {
-      "patterns": [
-        {
-          "name": "keyword.operator.ray",
-          "match": "->|=>|\\.\\.|\\+\\+|--|\\+=|-=|==|!=|<=|>=|=|\\+|-|\\*|/|<|>"
-        }
-      ]
-    },
-    "function-declaration": {
-      "patterns": [
-        {
-          "name": "meta.function.ray",
-          "match": "\\b(func)\\s+([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
-          "captures": {
-            "1": { "name": "keyword.control.ray" },
-            "2": { "name": "entity.name.function.ray" }
-          }
-        }
-      ]
-    },
-    "function-call": {
-      "patterns": [
-        {
-          "name": "meta.function-call.ray",
-          "match": "\\b(?!func\\b|if\\b|else\\b|for\\b|while\\b|return\\b|class\\b|extend\\b|new\\b|var\\b)([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()",
-          "captures": {
-            "1": { "name": "support.function.ray" }
-          }
-        }
-      ]
-    }
-  }
+    "brackets": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"]
+    ],
+    "autoClosingPairs": [
+        { "open": "{", "close": "}" },
+        { "open": "[", "close": "]" },
+        { "open": "(", "close": ")" },
+        { "open": "\"", "close": "\"" }
+    ],
+    "surroundingPairs": [
+        ["{", "}"],
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""]
+    ]
 }
+
