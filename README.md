@@ -9,7 +9,7 @@ A **multi-editor support extension** for the **NovelML** visual novel scripting 
 ### Features
 
 - **Syntax Highlighting**: Full syntax support based on TextMate rules, accurately identifying tags, attributes, variables, and comments.
-- **Code Snippets**: Built-in intelligent snippets to speed up your workflow. Just type a prefix (e.g., `bgm`, `t`, `n`) and press `Tab` to generate complex structures instantly.
+- **Code Snippets**: Built-in intelligent snippets to speed up your workflow. Just type a prefix (e.g., `bgm`, `text`, `bg`) and press `Tab` to generate complex structures instantly.
 - **Use Case**: Designed to be used with the [Suika3](https://github.com/awemorris/suika3) engine, making script writing clearer and more efficient.
 
 
